@@ -169,17 +169,21 @@ final class DriverManager implements BootstrapperContract
         $this->ensureConfiguration();
         if (!class_exists($className)) return false;
         $reflection = new ReflectionClass($className);
+        $requirementCount = 0;
+        $requirementsMet = 0;
         if ($this->attributeClass !== null) {
+            $requirementCount++;
             if (count($reflection->getAttributes($this->attributeClass)) > 0) {
-                return true;
+                $requirementsMet++;
             }
         }
         if ($this->contractClass !== null) {
+            $requirementCount++;
             if ($reflection->implementsInterface($this->contractClass)) {
-                return true;
+                $requirementsMet++;
             }
         }
-        return false;
+        return $requirementCount > 0 && $requirementCount == $requirementsMet;
     }
 
     /**
