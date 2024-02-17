@@ -213,7 +213,7 @@ final class DriverManager implements BootstrapperContract
     public function isEnabled(string $className): bool
     {
         $this->ensureConfiguration();
-        return isset($this->drivers[$className]);
+        return array_key_exists($className, $this->drivers);
     }
 
     /**
@@ -235,7 +235,7 @@ final class DriverManager implements BootstrapperContract
     public function get(string $className): object
     {
         $this->ensureConfiguration();
-        if (!isset($this->drivers[$className]))
+        if (!array_key_exists($className, $this->drivers))
         {
             throw new NotEnabledException($className);
         }
