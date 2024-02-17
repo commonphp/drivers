@@ -1,0 +1,29 @@
+{
+  "name": "comphp/drivers",
+  "type": "library",
+  "description": "Allows for drivers to be dynamically managed",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "timothy.mcclatchey",
+      "email": "timothy@commonphp.org"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "CommonPHP\\Drivers\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "CommonPHP\\Tests\\Drivers\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "^8.3",
+    "comphp/service-management": "^0.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5.9"
+  }
+}
